@@ -41,33 +41,32 @@ void minimum_cost(int city)
       minimum_cost(nearest_city);
 }
  
-int main()
+int main(int argc, char **argv)
 { 
-      int i, j;
-      printf("Enter Total Number of Cities:\t");
-      scanf("%d", &limit);
-      printf("\nEnter Cost Matrix\n");
-      for(i = 0; i < limit; i++)
-      {
-            printf("\nEnter %d Elements in Row[%d]\n", limit, i + 1);
-            for(j = 0; j < limit; j++)
-            {
-                  scanf("%d", &matrix[i][j]);
-            }
-            visited_cities[i] = 0;
+      int threads, cities;
+      cities = argv[1];
+      threads = argv[2];
+      char[] input = argv[3];
+
+      int **matrix;
+      matrix = malloc(cities * sizeof(int *));
+      for(int i=0; i<cities; i++) {
+            matrix[i] = malloc(cities * sizeof(int));
       }
-      printf("\nEntered Cost Matrix\n");
-      for(i = 0; i < limit; i++)
-      {
-            printf("\n");
-            for(j = 0; j < limit; j++)
-            {
-                  printf("%d ", matrix[i][j]);
+
+      FILE *file=fopen(input,"r")
+
+      for (int i = 0; i < cities; i++) {
+            for (int j = 0; j < cities; j++) {
+                  int n;
+                  fscanf(file, "%d", &n);
+                  printf("(%d,%d) = %d\n", i, j, n);
+                  matrix[i][j] = n;
             }
       }
-      printf("\n\nPath:\t");
-      minimum_cost(0);
-      printf("\n\nMinimum Cost: \t");
-      printf("%d\n", cost);
-      return 0;
+
+
+
+      printf("Best path: \n");
+      printf("Distance: \n");
 }
