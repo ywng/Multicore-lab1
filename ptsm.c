@@ -63,12 +63,9 @@ int main(int argc, char **argv)
         visited[i] = 0;
     }
 
-    for(int i=0; i<cities; i++) {
-        visited[i] = 1;
-        path[0]=i;
-        searchPath(1, i, 0, matrix, path, visited);
-        visited[i] = 0;
-    }
+    visited[0] = 1;
+    path[0] = 0;
+    searchPath(1, 0, 0, matrix, path, visited);
 
     printf("Best path: ");
     for(int i=0; i<cities; i++) {
