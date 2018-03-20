@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 
     #pragma omp parallel
     {
-        printf(omp_get_num_threads());
+        printf("Num threads: %d", omp_get_num_threads());
     }
 
     int **matrix;
