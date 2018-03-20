@@ -13,22 +13,30 @@ void searchPath(int level, int city, int cost, int** matrix, int path[], int vis
 {
     if(cost>=bestDist) return;
     if(level==cities) {
+        #pragma omp critical
         if(cost<bestDist) {
             bestDist = cost;
+
+            #pragma omp parallel
             for(int k=0; k<cities; k++) {
                 bestPath[k]=path[k];
             }
         }
     }
 
+
     for(int i=0; i<cities; i++) {
+        #pragma omp critical
         if(i==city || visited[i]) continue;
 
+        #pragma omp critical
         path[level] = i;
+        #pragma omp critical
         visited[i] = 1;
 
         searchPath(level+1, i, cost+matrix[city][i], matrix, path, visited);
 
+        #pragma omp critical
         visited[i] = 0;
     }
 
@@ -41,10 +49,8 @@ int main(int argc, char **argv)
     threads = atoi(argv[2]);
     inputFile = argv[3];
 
-    #pragma omp parallel
-    {
-        printf("Num threads: %d", omp_get_num_threads());
-    }
+    //set number of parallel threads
+    omp_set_num_threads(threads);
 
     int **matrix;
     matrix = malloc(cities * sizeof(int *));
@@ -65,6 +71,8 @@ int main(int argc, char **argv)
     int visited[cities];
     int path[cities];
     bestPath = malloc(cities * sizeof(int));
+
+    # pragma omp parallel
     for(int i=0; i<cities; i++) {
         visited[i] = 0;
     }
