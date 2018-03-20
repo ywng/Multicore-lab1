@@ -5,36 +5,76 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int matrix[25][25], visited_cities[10], limit, cost = 0;
+int threads, cities, bestDist = 9999999;
+int* bestPath;
 
+void searchPath(int level, int city, int cost, int** matrix, int path[], int visited[])
+{
+    if(cost>=bestDist) return;
+    if(level==cities) {
+        if(cost<bestDist) {
+            bestDist = cost;
+            for(int k=0; k<cities; k++) {
+                bestPath[k]=path[k];
+            }
+        }
+    }
+
+    for(int i=0; i<cities; i++) {
+        if(i==city || visited[i]) continue;
+
+        path[level] = i;
+        visited[i] = 1;
+
+        searchPath(level+1, i, cost+matrix[city][i], matrix, path, visited);
+
+        visited[i] = 0;
+    }
+
+}
 
 int main(int argc, char **argv)
 {
-      int threads, cities;
-      char* inputFile;
-      cities = atoi(argv[1]);
-      threads = atoi(argv[2]);
-      inputFile = argv[3];
+    char* inputFile;
+    cities = atoi(argv[1]);
+    threads = atoi(argv[2]);
+    inputFile = argv[3];
 
-      int **matrix;
-      matrix = malloc(cities * sizeof(int *));
-      for(int i=0; i<cities; i++) {
-            matrix[i] = malloc(cities * sizeof(int));
-      }
+    int **matrix;
+    matrix = malloc(cities * sizeof(int *));
+    for(int i=0; i<cities; i++) {
+        matrix[i] = malloc(cities * sizeof(int));
+    }
 
-      FILE *file=fopen(inputFile,"r");
+    FILE *file=fopen(inputFile, "r");
 
-      for (int i = 0; i < cities; i++) {
-            for (int j = 0; j < cities; j++) {
-                  int n;
-                  fscanf(file, "%d", &n);
-                  printf("(%d,%d) = %d\n", i, j, n);
-                  matrix[i][j] = n;
-            }
-      }
+    for (int i = 0; i < cities; i++) {
+        for (int j = 0; j < cities; j++) {
+              int n;
+              fscanf(file, "%d", &n);
+              matrix[i][j] = n;
+        }
+    }
 
+    int visited[cities];
+    int path[cities];
+    bestPath = malloc(cities * sizeof(int));
+    for(int i=0; i<cities; i++) {
+        visited[i] = 0;
+    }
 
+    for(int i=0; i<cities; i++) {
+        visited[i] = 1;
+        path[0]=i;
+        searchPath(1, i, 0, matrix, path, visited);
+        visited[i] = 0;
+    }
 
-      printf("Best path: \n");
-      printf("Distance: \n");
+    printf("Best path: ");
+    for(int i=0; i<cities; i++) {
+        printf("%d ", bestPath[i]);
+    }
+    printf("\n");
+    printf("Distance: %d\n", bestDist);
 }
+
