@@ -60,15 +60,15 @@ include CMakeFiles/Multicore_lab1.dir/flags.make
 CMakeFiles/Multicore_lab1.dir/ptsm.c.o: CMakeFiles/Multicore_lab1.dir/flags.make
 CMakeFiles/Multicore_lab1.dir/ptsm.c.o: ../ptsm.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Multicore_lab1.dir/ptsm.c.o"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Multicore_lab1.dir/ptsm.c.o   -c /Users/ywng/GitHub/Multicore-lab1/ptsm.c
+	/usr/local/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Multicore_lab1.dir/ptsm.c.o   -c /Users/ywng/GitHub/Multicore-lab1/ptsm.c
 
 CMakeFiles/Multicore_lab1.dir/ptsm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Multicore_lab1.dir/ptsm.c.i"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ywng/GitHub/Multicore-lab1/ptsm.c > CMakeFiles/Multicore_lab1.dir/ptsm.c.i
+	/usr/local/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/ywng/GitHub/Multicore-lab1/ptsm.c > CMakeFiles/Multicore_lab1.dir/ptsm.c.i
 
 CMakeFiles/Multicore_lab1.dir/ptsm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Multicore_lab1.dir/ptsm.c.s"
-	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ywng/GitHub/Multicore-lab1/ptsm.c -o CMakeFiles/Multicore_lab1.dir/ptsm.c.s
+	/usr/local/bin/gcc-7 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/ywng/GitHub/Multicore-lab1/ptsm.c -o CMakeFiles/Multicore_lab1.dir/ptsm.c.s
 
 CMakeFiles/Multicore_lab1.dir/ptsm.c.o.requires:
 

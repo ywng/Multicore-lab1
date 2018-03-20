@@ -41,11 +41,6 @@ int main(int argc, char **argv)
     threads = atoi(argv[2]);
     inputFile = argv[3];
 
-    #pragma omp parallel
-    {
-        printf(omp_get_num_threads());
-    }
-
     int **matrix;
     matrix = malloc(cities * sizeof(int *));
     for(int i=0; i<cities; i++) {
