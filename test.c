@@ -5,7 +5,7 @@
 void hello_openmp()
 {
 	#pragma omp parallel
-	prinf("Hello, OpenMP ");
+	printf("Hello, OpenMP ");
 }
 
 int main()
