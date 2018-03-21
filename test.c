@@ -10,6 +10,8 @@ void hello_openmp()
 
 int main()
 {
+	omp_set_num_threads(8);
+	
 	hello_openmp();
 
 	return 0;
