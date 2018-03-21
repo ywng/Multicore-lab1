@@ -74,6 +74,7 @@ void data_sharing()
 	{
 		printf("thread %d i = %d\n", omp_get_thread_num(), i);
 		i = 1000 + omp_get_thread_num();
+		printf("thread %d i = %d\n", omp_get_thread_num(), i);
 	}
 
 	printf("%d\n", i);
