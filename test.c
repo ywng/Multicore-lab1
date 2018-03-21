@@ -50,14 +50,24 @@ void single_master()
 	}
 }
 
+void sync()
+{
+	printf("ORDERED\n");
+
+	#pragma omp parallel for 
+	for (int i = 0; i < 20; ++i)
+	{
+		printf("%d", i*i);
+	}
+}
+
 int main()
 {
 
 	//hello_openmp();
 	//sections();  
-
-	single_master();
-
+	//single_master();
+	sync();
 
 	return 0;
 }
