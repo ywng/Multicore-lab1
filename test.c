@@ -57,7 +57,7 @@ void sync()
 	#pragma omp parallel for 
 	for (int i = 0; i < 20; ++i)
 	{
-		printf("%d", i*i);
+		printf("%d ", i*i);
 	}
 }
 
