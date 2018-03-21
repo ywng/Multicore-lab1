@@ -30,12 +30,28 @@ void sections()
 	}
 }
 
+void single_master()
+{
+	#pragma omp parallel
+	{
+		#pragma omp single
+		printf("imagine we are gathering some input bdefore we can start parallel work: %d\n", omp_get_thread_num());
+
+		//doing things in parallel 
+		printf("imagine we are doing some tasks in parallel, thread: %d\n", omp_get_thread_num());
+
+		#pragma omp master
+		printf("use master thread to output thte result, on thread: %d\n", omp_get_thread_num());
+	}
+}
+
 int main()
 {
 
 	//hello_openmp();
+	//sections();  
 
-	sections();  
+
 
 	return 0;
 }
