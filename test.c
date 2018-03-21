@@ -51,6 +51,7 @@ int main()
 	//hello_openmp();
 	//sections();  
 
+	single_master();
 
 
 	return 0;
