@@ -1,3 +1,4 @@
 /Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/CMakeFiles/Multicore_lab1_serial.dir
 /Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/CMakeFiles/Multicore_lab1.dir

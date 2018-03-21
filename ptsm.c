@@ -16,27 +16,21 @@ void searchPath(int level, int city, int cost, int** matrix, int path[], int vis
         #pragma omp critical
         if(cost<bestDist) {
             bestDist = cost;
-
-            #pragma omp parallel
             for(int k=0; k<cities; k++) {
                 bestPath[k]=path[k];
             }
         }
+
     }
 
-
     for(int i=0; i<cities; i++) {
-        #pragma omp critical
         if(i==city || visited[i]) continue;
 
-        #pragma omp critical
         path[level] = i;
-        #pragma omp critical
         visited[i] = 1;
 
         searchPath(level+1, i, cost+matrix[city][i], matrix, path, visited);
 
-        #pragma omp critical
         visited[i] = 0;
     }
 
@@ -68,18 +62,30 @@ int main(int argc, char **argv)
         }
     }
 
-    int visited[cities];
-    int path[cities];
     bestPath = malloc(cities * sizeof(int));
 
-    # pragma omp parallel
-    for(int i=0; i<cities; i++) {
-        visited[i] = 0;
+    #pragma omp parallel collapse(2)
+    for(int i=1; i<cities; i++) {
+        for(int j=1; j<cities; j++) {
+            if(i!=j) {
+                int visited[cities];
+                for(int i=0; i<cities; i++) {
+                    visited[i] = 0;
+                }
+                int path[cities];
+                visited[0] = 1;
+                path[0] = 0;
+                visited[i] = 1;
+                path[1] = i;
+                visited[j] = 1;
+                path[2] = j;
+
+                searchPath(3, j, matrix[0][i]+matrix[i][j], matrix, path, visited);
+            }
+        }
     }
 
-    visited[0] = 1;
-    path[0] = 0;
-    searchPath(1, 0, 0, matrix, path, visited);
+
 
     printf("Best path: ");
     for(int i=0; i<cities; i++) {

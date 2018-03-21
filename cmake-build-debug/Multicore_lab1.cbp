@@ -37,6 +37,50 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="Multicore_lab1_serial">
+				<Option output="/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Multicore_lab1_serial" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 Multicore_lab1_serial"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Multicore_lab1_serial/fast">
+				<Option output="/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Multicore_lab1_serial" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/9.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 Multicore_lab1_serial/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="Multicore_lab1">
 				<Option output="/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug/Multicore_lab1" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/ywng/GitHub/Multicore-lab1/cmake-build-debug"/>
@@ -84,6 +128,9 @@
 		</Build>
 		<Unit filename="/Users/ywng/GitHub/Multicore-lab1/ptsm.c">
 			<Option target="Multicore_lab1"/>
+		</Unit>
+		<Unit filename="/Users/ywng/GitHub/Multicore-lab1/tsm_serial.c">
+			<Option target="Multicore_lab1_serial"/>
 		</Unit>
 		<Unit filename="/Users/ywng/GitHub/Multicore-lab1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

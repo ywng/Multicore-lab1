@@ -49,5 +49,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/Multicore_lab1_serial.dir/DependInfo.cmake"
   "CMakeFiles/Multicore_lab1.dir/DependInfo.cmake"
   )

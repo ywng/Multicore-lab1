@@ -10,4 +10,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fopenmp")
 
 add_executable(Multicore_lab1
         ptsm.c)
+add_executable(Multicore_lab1_serial
+        tsm_serial.c)
 

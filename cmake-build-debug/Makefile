@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named Multicore_lab1_serial
+
+# Build rule for target.
+Multicore_lab1_serial: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Multicore_lab1_serial
+.PHONY : Multicore_lab1_serial
+
+# fast build rule for target.
+Multicore_lab1_serial/fast:
+	$(MAKE) -f CMakeFiles/Multicore_lab1_serial.dir/build.make CMakeFiles/Multicore_lab1_serial.dir/build
+.PHONY : Multicore_lab1_serial/fast
+
+#=============================================================================
 # Target rules for targets named Multicore_lab1
 
 # Build rule for target.
@@ -150,6 +163,33 @@ ptsm.c.s:
 	$(MAKE) -f CMakeFiles/Multicore_lab1.dir/build.make CMakeFiles/Multicore_lab1.dir/ptsm.c.s
 .PHONY : ptsm.c.s
 
+tsm_serial.o: tsm_serial.c.o
+
+.PHONY : tsm_serial.o
+
+# target to build an object file
+tsm_serial.c.o:
+	$(MAKE) -f CMakeFiles/Multicore_lab1_serial.dir/build.make CMakeFiles/Multicore_lab1_serial.dir/tsm_serial.c.o
+.PHONY : tsm_serial.c.o
+
+tsm_serial.i: tsm_serial.c.i
+
+.PHONY : tsm_serial.i
+
+# target to preprocess a source file
+tsm_serial.c.i:
+	$(MAKE) -f CMakeFiles/Multicore_lab1_serial.dir/build.make CMakeFiles/Multicore_lab1_serial.dir/tsm_serial.c.i
+.PHONY : tsm_serial.c.i
+
+tsm_serial.s: tsm_serial.c.s
+
+.PHONY : tsm_serial.s
+
+# target to generate assembly for a file
+tsm_serial.c.s:
+	$(MAKE) -f CMakeFiles/Multicore_lab1_serial.dir/build.make CMakeFiles/Multicore_lab1_serial.dir/tsm_serial.c.s
+.PHONY : tsm_serial.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -158,10 +198,14 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... Multicore_lab1_serial"
 	@echo "... Multicore_lab1"
 	@echo "... ptsm.o"
 	@echo "... ptsm.i"
 	@echo "... ptsm.s"
+	@echo "... tsm_serial.o"
+	@echo "... tsm_serial.i"
+	@echo "... tsm_serial.s"
 .PHONY : help
 
 
