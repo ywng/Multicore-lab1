@@ -10,7 +10,7 @@ void hello_openmp()
 
 int main()
 {
-	hellp_openmp();
+	hello_openmp();
 
 	return 0;
 }
