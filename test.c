@@ -69,7 +69,7 @@ void data_sharing()
 {
 	int i=10;
 
-	#pragma omp parallel for firstprivate(i)
+	#pragma omp parallel for lastprivate(i)
 	for(int a=0; a<10; a++) 
 	{
 		printf("thread %d i = %d\n", omp_get_thread_num(), i);
