@@ -81,6 +81,9 @@ int main(int argc, char **argv)
                 path[2] = j;
 
                 searchPath(3, j, matrix[0][i]+matrix[i][j], matrix, path, visited);
+
+                free(visited);
+                free(path);
             }
         }
     }
