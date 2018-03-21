@@ -67,12 +67,12 @@ void sync()
 
 void data_sharing()
 {
-	omp_set_num_threads(4);
+	omp_set_num_threads(6);
 
 	int i=10;
 
 	#pragma omp parallel for lastprivate(i)
-	for(int a=0; a<10; a++) 
+	for(int a=0; a<100; a++) 
 	{
 		printf("thread %d i = %d\n", omp_get_thread_num(), i);
 		i = 1000 + omp_get_thread_num();
