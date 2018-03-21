@@ -35,7 +35,7 @@ int main()
 
 	//hello_openmp();
 
-	sections();
+	sections();  
 
 	return 0;
 }
