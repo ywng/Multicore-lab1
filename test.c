@@ -11,10 +11,31 @@ void hello_openmp()
 	}
 }
 
+void sections()
+{
+	#pragma omp parallel sections
+	{
+		#pragma omp section
+		{
+			for(int i=0; i<10; i++) {
+				printf("%d", i);
+			}
+		}
+		#pragma omp section
+		{
+			for(int i=-10; i<0; i++) {
+				printf("%d", i);
+			}
+		}
+	}
+}
+
 int main()
 {
 
-	hello_openmp();
+	//hello_openmp();
+
+	sections();
 
 	return 0;
 }
