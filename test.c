@@ -54,10 +54,14 @@ void sync()
 {
 	printf("ORDERED\n");
 
-	#pragma omp parallel for 
+	#pragma omp parallel for ordered
 	for (int i = 0; i < 20; ++i)
 	{
-		printf("%d ", i*i);
+		//assume this is computation heavy... which worth to parallel
+		int j = i*i;
+
+		#pragma omp ordered
+		printf("%d ", j);
 	}
 }
 
