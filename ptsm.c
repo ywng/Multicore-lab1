@@ -53,6 +53,11 @@ int main(int argc, char **argv)
     }
 
     FILE *file=fopen(inputFile, "r");
+    if(!file)
+    {
+        printf("Cannot open file %s\n", inputFile);
+        exit(1);
+    }
 
     for (int i = 0; i < cities; i++) {
         for (int j = 0; j < cities; j++) {
