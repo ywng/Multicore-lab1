@@ -18,13 +18,13 @@ void sections()
 		#pragma omp section
 		{
 			for(int i=0; i<10; i++) {
-				printf("%d", i);
+				printf("%d ", i);
 			}
 		}
 		#pragma omp section
 		{
 			for(int i=-10; i<0; i++) {
-				printf("%d", i);
+				printf("%d ", i);
 			}
 		}
 	}
