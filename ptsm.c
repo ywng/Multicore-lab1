@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 
     bestPath = malloc(cities * sizeof(int));
 
-    #pragma omp parallel collapse(2)
+    #pragma omp parallel for collapse(2)
     for(int i=1; i<cities; i++) {
         for(int j=1; j<cities; j++) {
             if(i!=j) {
