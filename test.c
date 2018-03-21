@@ -36,7 +36,7 @@ void single_master()
 	{
 		#pragma omp single nowait
 		{
-			getch();
+			getchar();
 			printf("imagine we are gathering some input bdefore we can start parallel work: %d\n", omp_get_thread_num());
 		}
 		
