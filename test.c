@@ -67,6 +67,8 @@ void sync()
 
 void data_sharing()
 {
+	omp_set_num_threads(4);
+	
 	int i=10;
 
 	#pragma omp parallel for lastprivate(i)
