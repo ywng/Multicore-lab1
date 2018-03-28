@@ -9,8 +9,7 @@
 int threads, cities, bestDist = 9999999;
 int* bestPath;
 
-void searchPath(int level, int city, int cost, int** matrix, int path[], int visited[])
-{
+void searchPath(int level, int city, int cost, int** matrix, int path[], int visited[]) {
     //the subtree search ends if the cost up to here is already >= the best path we have so far
     if(cost>=bestDist) return;
 
@@ -41,8 +40,7 @@ void searchPath(int level, int city, int cost, int** matrix, int path[], int vis
 
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
     char* inputFile;
     cities = atoi(argv[1]);
     threads = atoi(argv[2]);
@@ -58,8 +56,7 @@ int main(int argc, char **argv)
     }
 
     FILE *file=fopen(inputFile, "r");
-    if(!file)
-    {
+    if(!file) {
         printf("Cannot open file %s\n", inputFile);
         exit(1);
     }
