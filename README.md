@@ -7,7 +7,9 @@ You must pick the path with shortest distance. Note that there may be several pa
 satisfy the above conditions, you just need to find one of them.
 
 
-For example,
-Best path: 0 1 3 4 5 2
-Distance: 36
+For example,  
+Best path: 0 1 3 4 5 2  
+Distance: 36  
+
+
 
