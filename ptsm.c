@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <omp.h>
 
-int threads, cities, bestDist = 9999999999;
+int threads, cities, bestDist = 99999999;
 int* bestPath;
 
 void searchPath(int level, int city, int cost, int** matrix, int path[], int visited[])
