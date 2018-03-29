@@ -6,20 +6,24 @@
 #include <stdlib.h>
 #include <omp.h>
 
-int threads, cities, bestDist = 9999999;
+int threads, cities, bestDist = 9999999999;
 int* bestPath;
 
-void searchPath(int level, int city, int cost, int** matrix, int path[], int visited[]) {
+void searchPath(int level, int city, int cost, int** matrix, int path[], int visited[])
+{
     //the subtree search ends if the cost up to here is already >= the best path we have so far
     if(cost>=bestDist) return;
 
-    if(level==cities) {
+    if(level==cities)
+    {
         //we need critical section here as different subtree search may find a better path at the same time
         #pragma omp critical
-        if(cost<bestDist) {
+        if(cost<bestDist)
+        {
             //update the best path cost and the best path content
             bestDist = cost;
-            for(int k=0; k<cities; k++) {
+            for(int k=0; k<cities; k++)
+            {
                 bestPath[k]=path[k];
             }
         }
@@ -27,7 +31,8 @@ void searchPath(int level, int city, int cost, int** matrix, int path[], int vis
     }
 
     //we don't need critical section here as we don't parallel the search of subtree
-    for(int i=0; i<cities; i++) {
+    for(int i=0; i<cities; i++)
+    {
         if(i==city || visited[i]) continue;
 
         path[level] = i;
@@ -40,7 +45,8 @@ void searchPath(int level, int city, int cost, int** matrix, int path[], int vis
 
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     char* inputFile;
     cities = atoi(argv[1]);
     threads = atoi(argv[2]);
@@ -51,18 +57,22 @@ int main(int argc, char **argv) {
 
     int **matrix;
     matrix = malloc(cities * sizeof(int *));
-    for(int i=0; i<cities; i++) {
+    for(int i=0; i<cities; i++)
+    {
         matrix[i] = malloc(cities * sizeof(int));
     }
 
     FILE *file=fopen(inputFile, "r");
-    if(!file) {
+    if(!file)
+    {
         printf("Cannot open file %s\n", inputFile);
         exit(1);
     }
 
-    for (int i = 0; i < cities; i++) {
-        for (int j = 0; j < cities; j++) {
+    for (int i = 0; i < cities; i++)
+    {
+        for (int j = 0; j < cities; j++)
+        {
               int n;
               fscanf(file, "%d", &n);
               matrix[i][j] = n;
@@ -77,12 +87,16 @@ int main(int argc, char **argv) {
      * The unrolling make sure the load for the given number of threads can be distributed evenly.
      */
     #pragma omp parallel for collapse(2)
-    for(int i=1; i<cities; i++) {
-        for(int j=1; j<cities; j++) {
-            if(i!=j) {
+    for(int i=1; i<cities; i++)
+    {
+        for(int j=1; j<cities; j++)
+        {
+            if(i!=j)
+            {
                 //visited[] and path[] are private to the thread
                 int visited[cities];
-                for(int i=0; i<cities; i++) {
+                for(int i=0; i<cities; i++)
+                {
                     visited[i] = 0;
                 }
                 int path[cities];
@@ -104,7 +118,8 @@ int main(int argc, char **argv) {
 
 
     printf("Best path: ");
-    for(int i=0; i<cities; i++) {
+    for(int i=0; i<cities; i++)
+    {
         printf("%d ", bestPath[i]);
     }
     printf("\n");
