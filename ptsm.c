@@ -82,40 +82,51 @@ int main(int argc, char **argv)
     //to store the best path found
     bestPath = malloc(cities * sizeof(int));
 
-    /* I decide to unroll the first two level or the combination tree. Then, we start from level 3 to do the path search.
-     * We can treat each of these level 3 starting point search as a task and we are doing task parallelism.
-     * The unrolling make sure the load for the given number of threads can be distributed evenly.
-     */
-    #pragma omp parallel for collapse(2)
-    for(int i=1; i<cities; i++)
+    if(cities==1)
     {
-        for(int j=1; j<cities; j++)
+        bestPath[0] = 0;
+        bestDist = 0;
+    } else if (cities==2)
+    {
+        bestPath[0] = 0;
+        bestPath[1] = 1;
+        bestDist = matrix[0][1];
+    } else
+    {
+        /* I decide to unroll the first two level of the combination tree. Then, we start from level 3 to do the path search.
+         * We can treat each of these level 3 starting point search as a task and we are doing task parallelism.
+         * The unrolling make sure the load for the given number of threads can be distributed evenly.
+         * The default omp scheduling seems to give the best result.
+         */
+        #pragma omp parallel for collapse(2)
+        for(int i=1; i<cities; i++)
         {
-            if(i!=j)
+            for(int j=1; j<cities; j++)
             {
-                //visited[] and path[] are private to the thread
-                int visited[cities];
-                for(int i=0; i<cities; i++)
+                if(i!=j)
                 {
-                    visited[i] = 0;
+                    //visited[] and path[] are private to the thread
+                    int visited[cities];
+                    for(int i=0; i<cities; i++)
+                    {
+                        visited[i] = 0;
+                    }
+                    int path[cities];
+
+                    //we update the visited[] and path[] based on the first two cities we choose
+                    //and then start the search of the remaining subtree
+                    visited[0] = 1;
+                    path[0] = 0;
+                    visited[i] = 1;
+                    path[1] = i;
+                    visited[j] = 1;
+                    path[2] = j;
+
+                    searchPath(3, j, matrix[0][i]+matrix[i][j], matrix, path, visited);
                 }
-                int path[cities];
-
-                //we update the visited[] and path[] based on the first two cities we choose
-                //and then start the search of the remaining subtree
-                visited[0] = 1;
-                path[0] = 0;
-                visited[i] = 1;
-                path[1] = i;
-                visited[j] = 1;
-                path[2] = j;
-
-                searchPath(3, j, matrix[0][i]+matrix[i][j], matrix, path, visited);
             }
         }
     }
-
-
 
     printf("Best path: ");
     for(int i=0; i<cities; i++)
