@@ -1,1 +1,0 @@
-/usr/local/bin/gcc-7 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/Multicore_lab1.dir/ptsm.c.o  -o Multicore_lab1 
